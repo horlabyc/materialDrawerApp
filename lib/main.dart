@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:material_drawer/new_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,6 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       home: MainScreen(),
+      // routes: {'/pageone': (BuildContext context) => NewPage('Page One')},
     );
   }
 }
@@ -47,15 +49,24 @@ class MainScreen extends StatelessWidget {
             ListTile(
               title: Text('Page One'),
               trailing: Icon(Icons.arrow_upward),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => NewPage('Page One')));
+              },
             ),
             ListTile(
               title: Text('Page Two'),
               trailing: Icon(Icons.arrow_downward),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => NewPage('Page Two')));
+              },
             ),
             Divider(),
             ListTile(
-              title: Text('Closee'),
+              title: Text('Close'),
               trailing: Icon(Icons.close),
+              onTap: () => Navigator.of(context).pop(),
             )
           ],
         ),
